@@ -2,6 +2,7 @@ package at.stadter.askomat;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class QuestionService {
 
@@ -54,6 +55,10 @@ public class QuestionService {
 
     public void addQuestion(QuestionModel question) {
         questionRepository.addQuestion(question);
+    }
+
+    public Optional<QuestionModel> getQuestionBy(String userQuestion) {
+        return questionRepository.getQuestionBy(userQuestion);
     }
 
 }

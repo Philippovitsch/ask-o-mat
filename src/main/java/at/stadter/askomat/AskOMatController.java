@@ -1,5 +1,7 @@
 package at.stadter.askomat;
 
+import java.util.Optional;
+
 public class AskOMatController {
 
     private final UserInputHandler inputHandler;
@@ -33,7 +35,14 @@ public class AskOMatController {
     }
 
     private void askQuestion() {
-
+        askOMatView.printMessage("Please ask your question:");
+        String userQuestion = inputHandler.getUserInput();
+        Optional<QuestionModel> question = questionService.getQuestionBy(userQuestion);
+        if (question.isEmpty()) {
+            askOMatView.printMessage("The answer to life, universe and everything is 42.");
+        } else {
+            askOMatView.printAnswers(question.get());
+        }
     }
 
     private void addQuestion() {
