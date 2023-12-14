@@ -19,7 +19,7 @@ public class AskOMatController {
     }
 
     public void start() {
-        askOMatView.printWelcomeMessage();
+        askOMatView.printWelcomeText();
         boolean isRunning = true;
         while (isRunning) {
             askOMatView.printMainMenu();
@@ -28,35 +28,35 @@ public class AskOMatController {
                 case "1" -> askQuestion();
                 case "2" -> addQuestion();
                 case "q", "Q" -> isRunning = false;
-                default -> askOMatView.printMessage("\nUnknown option - try again!");
+                default -> askOMatView.printMessage(Messages.UNKNOWN_OPTION);
             }
         }
-        askOMatView.printMessage("\nBye bye!");
+        askOMatView.printMessage(Messages.GOODBYE);
     }
 
     private void askQuestion() {
-        askOMatView.printMessage("\nPlease ask your question:");
+        askOMatView.printMessage(Messages.ASK_QUESTION);
         String userQuestion = inputHandler.getUserInput();
         Optional<QuestionModel> question = questionService.getQuestionBy(userQuestion);
         if (question.isEmpty()) {
-            askOMatView.printMessage("\nThe answer to life, universe and everything is 42. :)");
+            askOMatView.printMessage(Messages.DEFAULT_ANSWER);
         } else {
             askOMatView.printAnswers(question.get());
         }
     }
 
     private void addQuestion() {
-        askOMatView.printMessage("\nPlease enter your question in the following format:");
-        askOMatView.printMessage("<question>? \"<answer1>\" \"<answer2>\" \"<answerX>\"");
+        askOMatView.printMessage(Messages.ADD_QUESTION);
+        askOMatView.printMessage(Messages.QUESTION_SYNTAX);
         String userQuestion = inputHandler.getUserInput();
         if (!questionService.isValidFormat(userQuestion)) {
-            askOMatView.printMessage("\nWrong format - try again!");
+            askOMatView.printMessage(Messages.WRONG_FORMAT);
         } else if (!questionService.isWithinMaxLength(userQuestion)) {
-            askOMatView.printMessage("\nYour question/ answer is too long - try again!");
+            askOMatView.printMessage(Messages.QUESTION_TOO_LONG);
         } else {
             QuestionModel question = questionService.createQuestion(userQuestion);
             questionService.addQuestion(question);
-            askOMatView.printMessage("\nYour questions has been saved!");
+            askOMatView.printMessage(Messages.QUESTION_SAVED);
         }
     }
 

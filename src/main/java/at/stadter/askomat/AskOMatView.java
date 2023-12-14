@@ -2,7 +2,7 @@ package at.stadter.askomat;
 
 public class AskOMatView {
 
-    public void printWelcomeMessage() {
+    public void printWelcomeText() {
         System.out.println();
         System.out.println("╔════════════════════════╗");
         System.out.println("║  Welcome to ASK-O-MAT  ║");
@@ -24,8 +24,8 @@ public class AskOMatView {
         }
     }
 
-    public void printMessage(String message) {
-        System.out.println(message);
+    public void printMessage(Messages message) {
+        System.out.println(message.getMessage());
     }
 
 }
