@@ -6,7 +6,7 @@ public class UserInputHandler {
 
     public String getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
 }
