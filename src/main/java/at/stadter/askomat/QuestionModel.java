@@ -1,5 +1,8 @@
 package at.stadter.askomat;
 
-public record QuestionModel() {
+import java.util.List;
 
-}
+public record QuestionModel(
+        String question,
+        List<String> answers
+) {}
