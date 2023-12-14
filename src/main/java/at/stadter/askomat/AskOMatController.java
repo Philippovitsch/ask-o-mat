@@ -4,14 +4,14 @@ public class AskOMatController {
 
     private final UserInputHandler inputHandler;
     private final AskOMatView askOMatView;
-    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
 
     public AskOMatController(
             UserInputHandler inputHandler,
             AskOMatView askOMatView,
-            QuestionRepository questionRepository
+            QuestionService questionService
     ) {
-        this.questionRepository = questionRepository;
+        this.questionService = questionService;
         this.askOMatView = askOMatView;
         this.inputHandler = inputHandler;
     }
