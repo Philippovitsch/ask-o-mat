@@ -2,6 +2,7 @@ package at.stadter.askomat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class QuestionRepository {
 
@@ -15,11 +16,10 @@ public class QuestionRepository {
         return questions;
     }
 
-    public QuestionModel getQuestionBy(String wording) throws QuestionNotFoundException {
+    public Optional<QuestionModel> getQuestionBy(String wording) {
         return questions.stream()
                 .filter(question -> question.question().equals(wording))
-                .findFirst()
-                .orElseThrow(() -> new QuestionNotFoundException("Couldn't find: " + wording));
+                .findFirst();
     }
 
     public void addQuestion(QuestionModel question) {
