@@ -28,35 +28,35 @@ public class AskOMatController {
                 case "1" -> askQuestion();
                 case "2" -> addQuestion();
                 case "q", "Q" -> isRunning = false;
-                default -> askOMatView.printMessage("Unknown option - try again!");
+                default -> askOMatView.printMessage("\nUnknown option - try again!");
             }
         }
-        askOMatView.printMessage("Bye bye!");
+        askOMatView.printMessage("\nBye bye!");
     }
 
     private void askQuestion() {
-        askOMatView.printMessage("Please ask your question:");
+        askOMatView.printMessage("\nPlease ask your question:");
         String userQuestion = inputHandler.getUserInput();
         Optional<QuestionModel> question = questionService.getQuestionBy(userQuestion);
         if (question.isEmpty()) {
-            askOMatView.printMessage("The answer to life, universe and everything is 42.");
+            askOMatView.printMessage("\nThe answer to life, universe and everything is 42. :)");
         } else {
             askOMatView.printAnswers(question.get());
         }
     }
 
     private void addQuestion() {
-        askOMatView.printMessage("Please enter your question in the following format:");
+        askOMatView.printMessage("\nPlease enter your question in the following format:");
         askOMatView.printMessage("<question>? \"<answer1>\" \"<answer2>\" \"<answerX>\"");
         String userQuestion = inputHandler.getUserInput();
         if (!questionService.isValidFormat(userQuestion)) {
-            askOMatView.printMessage("Wrong format - try again!");
+            askOMatView.printMessage("\nWrong format - try again!");
         } else if (!questionService.isWithinMaxLength(userQuestion)) {
-            askOMatView.printMessage("Your question/ answer is too long - try again!");
+            askOMatView.printMessage("\nYour question/ answer is too long - try again!");
         } else {
             QuestionModel question = questionService.createQuestion(userQuestion);
             questionService.addQuestion(question);
-            askOMatView.printMessage("Your questions has been saved!");
+            askOMatView.printMessage("\nYour questions has been saved!");
         }
     }
 
