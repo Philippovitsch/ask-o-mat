@@ -12,10 +12,6 @@ public class QuestionRepository {
         this.questions = new ArrayList<>();
     }
 
-    public List<QuestionModel> getAllQuestions() {
-        return questions;
-    }
-
     public Optional<QuestionModel> getQuestionBy(String wording) {
         return questions.stream()
                 .filter(question -> question.question().equals(wording))
