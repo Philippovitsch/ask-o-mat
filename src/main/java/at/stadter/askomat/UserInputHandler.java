@@ -4,8 +4,13 @@ import java.util.Scanner;
 
 public class UserInputHandler {
 
+    private final Scanner scanner;
+
+    public UserInputHandler(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     public String getUserInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
