@@ -51,6 +51,8 @@ public class AskOMatController {
         String userQuestion = inputHandler.getUserInput();
         if (!questionService.isValidFormat(userQuestion)) {
             askOMatView.printMessage(Messages.WRONG_FORMAT);
+        } else if (questionService.questionAlreadyExists(userQuestion)) {
+            askOMatView.printMessage(Messages.QUESTION_ALREADY_EXISTS);
         } else if (!questionService.isWithinMaxLength(userQuestion)) {
             askOMatView.printMessage(Messages.QUESTION_TOO_LONG);
         } else {

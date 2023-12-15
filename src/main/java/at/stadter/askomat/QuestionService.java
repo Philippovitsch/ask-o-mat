@@ -33,6 +33,11 @@ public class QuestionService {
                     );
     }
 
+    public boolean questionAlreadyExists(String userQuestion) {
+        String question = userQuestion.substring(0, userQuestion.indexOf(SEPARATOR) + 1);
+        return questionRepository.getQuestionBy(question).isPresent();
+    }
+
     public boolean isWithinMaxLength(String userQuestion) {
         String question = userQuestion.substring(0, userQuestion.indexOf(SEPARATOR) + 1);
         String rawAnswers = userQuestion.substring(userQuestion.indexOf(SEPARATOR) + 1);

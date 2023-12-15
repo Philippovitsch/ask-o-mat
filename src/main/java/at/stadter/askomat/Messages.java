@@ -6,6 +6,7 @@ public enum Messages {
     ASK_QUESTION("\nPlease ask your question:"),
     DEFAULT_ANSWER("\nThe answer to life, universe and everything is 42. :)"),
     GOODBYE("\nBye bye!"),
+    QUESTION_ALREADY_EXISTS("\nYour question already exists!"),
     QUESTION_SAVED("\nYour questions has been saved!"),
     QUESTION_SYNTAX("<question>? \"<answer1>\" \"<answer2>\" \"<answerX>\""),
     QUESTION_TOO_LONG("\nYour question/ answer is too long - try again!"),
